@@ -4,10 +4,6 @@ import { APIKEY } from "../config/key";
 import { Container } from "./Style";
 
 
-
-
-
-
 function Details() {
     const img_path = 'https://image.tmdb.org/t/p/w500/';
 
@@ -33,6 +29,17 @@ function Details() {
                     nota: data.vote_average
                 }
                  setMovie(movie)
+            })
+    }, [id])
+
+    useEffect(() => {
+        fetch(`
+            https://api.themoviedb.org/3/movie/${id}/videos?api_key=${APIKEY}&language=pt-BR&page=1`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+
+                
             })
     }, [id])
 
